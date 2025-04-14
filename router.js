@@ -17,4 +17,13 @@ router.get('/', (req, res) => {
   });
 });
 
+//Enrutador para el registro
+router.get('/create', (req, res) => {
+  res.render('create');
+});
+
+//Acceder a toda la lógica
+const crud = require('./controllers/crud');
+router.post('/save', crud.save);
+
 module.exports = router;
