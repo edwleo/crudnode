@@ -40,7 +40,7 @@
                   <td><%= element.color %></td>
                   <td>
                     <a href="./edit/<%= element.id %>" class="btn btn-sm btn-info">Editar</a>
-                    <a href="./delete/<%= element.id %>" class="btn btn-sm btn-danger">Eliminar</a>
+                    <a href="./delete/<%= element.id %>" class="btn btn-sm btn-danger delete">Eliminar</a>
                   </td>
                 </tr>
               <% }) %>
@@ -54,6 +54,21 @@
   <footer>
     <span></span>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const lnkEliminar = document.querySelectorAll(".delete");
+      lnkEliminar.forEach(enlace => {
+        enlace.addEventListener("click", function(event){
+          event.preventDefault();
+          if (confirm("¿Desea eliminar el registro?")){
+            const ruta = event.target.getAttribute('href');
+            window.location.href = ruta;
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
